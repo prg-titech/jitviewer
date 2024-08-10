@@ -144,7 +144,7 @@ class ParserWithHtmlRepr(parser.SimpleParser):
 class TraceForOpcodeHtml(parser.TraceForOpcode):
 
     def html_repr(self):
-        if self.filename is not None:
+        if self.filename is not None and hasattr(self.getopcode(), "bytecode_extra"):
             code = self.getcode()
             if code is None:
                 return self.bytecode_name
